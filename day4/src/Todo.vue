@@ -42,81 +42,44 @@ const filteredList = computed(() => {
 
 </script>
 <template>
-    <h2>Список задач</h2>
-    <div class="filters">
-        <button @click="setFilter('all')" :class="currentFilter == 'all' ? 'active' : ''">Все</button>
-        <button @click="setFilter('active')" :class="currentFilter == 'active' ? 'active' : ''">Активные</button>
-        <button @click="setFilter('done')" :class="currentFilter == 'done' ? 'active' : ''">Выполненные</button>
-    </div>
-    <div class="action">
-        <input @keypress="handleKeyEnter" type="text" name="todotext" v-model="newTodoText">
-        <button @click="addTodo">Добавить</button>
-    </div>
-    <div class="list">
-        <div v-for="t in filteredList" :key="t.id" class="item">
-            <input type="checkbox" v-model="t.isDone" />
-            <span :class="t.isDone ? 'done' : ''">{{ t.text }}</span>
-            <button @click=" removeTodo(t.id)">x</button>
+    <div
+        class="flex flex-col items-center shadow-xl rounded-xl p-8 mt-4 w-full h-full sm:min-w-sm  sm:max-w-3xl bg-white mx-2">
+        <h2 class="font-bold text-4xl">Список задач</h2>
+        <div class="flex gap-4 mt-4">
+            <button class="cursor-pointer shadow-sm rounded-sm p-1 px-2 hover:bg-emerald-200 transition-all"
+                @click="setFilter('all')" :class="currentFilter == 'all' ? 'bg-emerald-500' : ''">Все</button>
+            <button class="cursor-pointer shadow-sm rounded-sm p-1 px-2 hover:bg-red-200 transition-all"
+                @click="setFilter('active')" :class="currentFilter == 'active' ? 'bg-red-500' : ''">Активные</button>
+            <button class="cursor-pointer shadow-sm rounded-sm p-1 px-2 hover:bg-gray-200 transition-all"
+                @click="setFilter('done')" :class="currentFilter == 'done' ? 'bg-gray-500' : ''">Выполненные</button>
+        </div>
+        <div class="flex gap-2 mt-4 w-full">
+            <input class="border rounded-sm flex-1" @keypress="handleKeyEnter" type="text" name="todotext"
+                v-model="newTodoText">
+            <button class="cursor-pointer shadow-sm rounded-sm p-1 px-2 hover:bg-emerald-200 transition-all"
+                @click="addTodo">Добавить</button>
+        </div>
+        <div class="flex flex-col max-h-40 overflow-y-auto w-full gap-2 p-2">
+            <div v-for="t in filteredList" :key="t.id" class="flex  gap-4 justify-center items-center">
+                <input class="w-5 h-5" type="checkbox" v-model="t.isDone" />
+                <span class="w-full flex-1" :class="t.isDone ? 'line-through' : ''">{{ t.text }}</span>
+                <button
+                    class="cursor-pointer shadow-sm rounded-sm p-1 px-2 hover:bg-red-500 active:bg-red-800 transition-all"
+                    @click=" removeTodo(t.id)">x</button>
+            </div>
+        </div>
+        <div class="flex gap-4">
+            <span>Всего: {{ total }}</span>
+            <span> | </span>
+            <span>Выполнено: {{ totalDone }}</span>
         </div>
     </div>
-    <div class="result">
-        <span>Всего: {{ total }}</span>
-        <span> | </span>
-        <span>Выполнено: {{ totalDone }}</span>
-    </div>
-
 </template>
 
 <style scoped>
-.filters {
-    display: flex;
-    gap: 1rem;
-    max-width: 15rem;
-
-    & .active {
-        background-color: green;
-    }
-}
-
-.action {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5rem;
-    max-width: 15rem;
-
-    & input {
-        flex: 1;
-    }
-}
-
 .list {
-    display: flex;
-    flex-direction: column;
-    max-height: 50rem;
-    overflow-y: auto;
-    min-width: 15rem;
-    gap: 0.5rem;
-    padding: 0.5rem;
 
     & .item {
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-
-        & input {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        & span {
-            width: 100%;
-
-            &.done {
-                text-decoration: line-through;
-            }
-        }
 
         & button {
             text-align: center;

@@ -30,9 +30,9 @@ const tailwindColor = (color) => {
 
 <template>
     <div
-        class="flex justify-center items-center flex-col sm:flex-row gap-16 shadow-xl p-2 sm:p-8 rounded-xl w-[90%] sm:min-w-sm  sm:max-w-xl">
-        <div class="flex flex-col items-start px-4">
-            <h2 class="font-bold">Выберите цвет:</h2>
+        class="flex justify-center items-start flex-col sm:flex-row gap-16 shadow-xl p-2 sm:p-8 rounded-xl  h-full sm:min-w-sm  sm:max-w-3xl bg-white mt-4 mx-2">
+        <div class="flex flex-col items-start justify-start px-4">
+            <h2 class="font-bold text-xl">Выберите цвет:</h2>
             <div class="mt-8 grid grid-cols-3 gap-2">
                 <button v-for="color in colors" :key="color"
                     :class="[tailwindColor(color), selectedColor == color ? 'outline-double outline-current' : '']"
@@ -40,7 +40,7 @@ const tailwindColor = (color) => {
             </div>
         </div>
         <div class="flex flex-col items-start px-4">
-            <h2 class="font-bold">Предпросмотр:</h2>
+            <h2 class="font-bold text-xl">Предпросмотр:</h2>
             <div :class="selectedColor ? `bg-${selectedColor}-500` : 'bg-transparent'"
                 class="w-40 h-40 mt-8 rounded-xl transition-colors duration-500"></div>
             <p class="mt-8 min-w-48">Выбран: {{ selectedColor }}</p>
