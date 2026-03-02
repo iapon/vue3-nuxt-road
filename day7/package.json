@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp -R ./dist/* ../dist/week1",
+    "build": "vite build && mkdir ./week1 && cp -R ./dist/* ../week1",
     "preview": "vite preview",
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
