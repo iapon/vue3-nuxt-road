@@ -3,7 +3,14 @@
 Шаги:
 
 1. Создайте новый проект: npx nuxi@latest init product-catalog
-2. Создайте layouts/default.vue с шапкой и футером
+2. Добавьте в `nuxt.config.ts` настройку Nuxt 4:
+   ```ts
+   export default defineNuxtConfig({
+     future: { compatibilityVersion: 4 },
+     devtools: { enabled: true }
+   })
+   ```
+3. Создайте layouts/default.vue с шапкой и футером
 
 Требования к pages/index.vue:
 
