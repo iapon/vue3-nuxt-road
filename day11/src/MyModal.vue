@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Teleport } from 'vue';
 interface MyModalProps {
-    isOpen: Boolean
-    title?: String
+    isOpen: boolean
+    title?: string
 }
 const props = defineProps<MyModalProps>();
 const emits = defineEmits(['close'])

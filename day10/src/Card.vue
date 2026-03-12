@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface CardProps {
-    title?: String
+    title?: string
 }
 defineProps<CardProps>()
 </script>
@@ -8,7 +8,7 @@ defineProps<CardProps>()
 
 
 <template>
-    <div class="w-md shadow-md rounded-2xl flex flex-col gap-2 p-8 border-gray-100 border">
+    <div class="flex flex-col gap-2 p-8 w-md border border-gray-100 shadow-md rounded-2xl">
         <div class="w-full">
             <slot name="header">{{ title }}</slot>
         </div>
