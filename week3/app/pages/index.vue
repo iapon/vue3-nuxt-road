@@ -4,9 +4,7 @@ useHead({
 })
 </script>
 <template>
-    <h1>Мой Блог</h1>
-    <NuxtLink to="/about">
-        О блоге
-    </NuxtLink>
-
+    <div>
+        <AppHeader :items="[{ link: '/about', title: 'Обо мне' }, { link: '/blog', title: 'Блог' }]" />
+    </div>
 </template>

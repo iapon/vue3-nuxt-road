@@ -4,16 +4,16 @@ interface HeaderLinks {
     link: string
 
 }
-const props = defineProps<HeaderLinks[]>()
+const props = defineProps<{ items: HeaderLinks[] }>()
 
 </script>
 
 <template>
-    <div class="flex flex-end gap-2 p-4 h-10 w-full bg-white shadow-sm">
+    <div class="flex gap-2 justify-end px-4 h-10 w-full bg-white shadow-sm">
         <!-- <div> there will be logo</div> -->
-        <div class="p-2" v-for="link in props">
-            <NuxtLink :to="link.link">
-                {{ link.title }}
+        <div class="flex p-2" v-for="item in props.items">
+            <NuxtLink :to="item.link">
+                {{ item.title }}
             </NuxtLink>
         </div>
     </div>
